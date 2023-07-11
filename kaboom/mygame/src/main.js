@@ -48,15 +48,27 @@ scene("game", () => {
 
     function spawnTree() {
 
+        let randomHeight = rand(36, 100)
+
         // add tree obj
-        add([
-            //sprite("tree"),
-            rect(48, rand(32, 96)),
+        /*let base = add([
+            rect(48, randomHeight),
             area(),
             outline(4),
             pos(width(), height() - FLOOR_HEIGHT),
             anchor("botleft"),
             color(255, 180, 255),
+            move(LEFT, SPEED),
+            "tree",
+        ]);
+        */
+
+        add([
+            sprite("tree"),
+            pos(width() - 20, height() - FLOOR_HEIGHT),
+            scale(0.25, randomHeight/1000),
+            area(),
+            anchor("botleft"),
             move(LEFT, SPEED),
             "tree",
         ]);

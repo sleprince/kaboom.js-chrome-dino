@@ -9,6 +9,7 @@ kaboom();
 
 // load assets
 loadSprite("bean", "sprites/bean.png");
+loadSprite("tree", "sprites/tree.png");
 
 scene("game", () => {
 
@@ -49,6 +50,7 @@ scene("game", () => {
 
         // add tree obj
         add([
+            //sprite("tree"),
             rect(48, rand(32, 96)),
             area(),
             outline(4),
@@ -93,9 +95,19 @@ scene("game", () => {
 
 scene("lose", (score) => {
 
+    //display player character sprite
     add([
         sprite("bean"),
         pos(width() / 2, height() / 2 - 80),
+        scale(2),
+        anchor("center"),
+        
+    ]);
+
+    //display game over text
+    add([
+        text("GAME OVER"),
+        pos(width() / 2, height() / 2 + 15),
         scale(2),
         anchor("center"),
     ]);

@@ -50,7 +50,13 @@ scene("game", () => {
         (setGravity(5600));
     })
 
-    onClick(jump);
+    //or left clicks
+    onMousePress("left", jump);
+    onMouseRelease("left", () => {
+        (setGravity(5600));
+    })
+
+
 
     function spawnTree() {
 

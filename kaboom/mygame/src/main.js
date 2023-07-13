@@ -1,7 +1,7 @@
 import kaboom from "kaboom"
 
 const FLOOR_HEIGHT = 48;
-const JUMP_FORCE = 800;
+let JUMP_FORCE = 800;
 const SPEED = 480;
 
 // initialize context
@@ -38,12 +38,18 @@ scene("game", () => {
 
     function jump() {
         if (player.isGrounded()) {
+            JUMP_FORCE = 1000;
+            setGravity(1600);
             player.jump(JUMP_FORCE);
         }
     }
 
     // jump when user press space
-    onKeyPress("space", jump);
+    onKeyPressRepeat("space", jump);
+    onKeyRelease("space", () => {
+        (setGravity(5600));
+    })
+
     onClick(jump);
 
     function spawnTree() {
@@ -66,7 +72,7 @@ scene("game", () => {
         add([
             sprite("tree"),
             pos(width() - 20, height() - FLOOR_HEIGHT),
-            scale(0.25, randomHeight/1000),
+            scale(0.25, randomHeight / 1000),
             area(),
             anchor("botleft"),
             move(LEFT, SPEED),
@@ -113,7 +119,7 @@ scene("lose", (score) => {
         pos(width() / 2, height() / 2 - 80),
         scale(2),
         anchor("center"),
-        
+
     ]);
 
     //display game over text

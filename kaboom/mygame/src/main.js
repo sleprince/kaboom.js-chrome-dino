@@ -10,11 +10,15 @@ kaboom();
 // load assets
 loadSprite("bean", "sprites/bean.png");
 loadSprite("tree", "sprites/tree.png");
+loadSprite("bg", "sprites/bg.png");
 
 scene("game", () => {
 
     // define gravity
     setGravity(1600);
+
+    //add background
+    add([sprite("bg", { width: width(), height: height() })]);
 
     // add a game object to screen
     const player = add([
